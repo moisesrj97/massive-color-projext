@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react';
+import Palette from './Palette';
+import PaletteList from './PaletteList';
+import { Switch, Route } from 'react-router-dom';
+import SingleColorPalette from './SingleColorPalette';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import seedColors from './seedColors';
+
+import { createPalette } from './colorHelpers';
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  findPalette(id) {
+    return seedColors.find((e) => e.id === id);
+  }
+
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" render={() => <PaletteList palettes={seedColors} />} />
+        <Route
+          exact
+          path="/palette/:id"
+          render={(routeProps) => <Palette palette={createPalette(this.findPalette(routeProps.match.params.id))} {...routeProps} />}
+        />
+        <Route
+          path="/palette/:id/:color"
+          render={(routeProps) => (
+            <SingleColorPalette
+              palette={createPalette(this.findPalette(routeProps.match.params.id))}
+              id={routeProps.match.params.id}
+              color={routeProps.match.params.color}
+              {...routeProps}
+            />
+          )}
+        ></Route>
+        <Route render={() => <h1>Not Found</h1>} />
+      </Switch>
+    );
+  }
 }
 
 export default App;
