@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/massive-color-projext/static/css/main.89dffd56.chunk.css",
-    "main.js": "/massive-color-projext/static/js/main.5124be83.chunk.js",
-    "main.js.map": "/massive-color-projext/static/js/main.5124be83.chunk.js.map",
+    "main.js": "/massive-color-projext/static/js/main.646b44b5.chunk.js",
+    "main.js.map": "/massive-color-projext/static/js/main.646b44b5.chunk.js.map",
     "runtime-main.js": "/massive-color-projext/static/js/runtime-main.d5e2defb.js",
     "runtime-main.js.map": "/massive-color-projext/static/js/runtime-main.d5e2defb.js.map",
     "static/css/2.d59c41ec.chunk.css": "/massive-color-projext/static/css/2.d59c41ec.chunk.css",
@@ -21,6 +21,6 @@
     "static/css/2.d59c41ec.chunk.css",
     "static/js/2.36bfad14.chunk.js",
     "static/css/main.89dffd56.chunk.css",
-    "static/js/main.5124be83.chunk.js"
+    "static/js/main.646b44b5.chunk.js"
   ]
 }
