@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/the-color-piker-proyect/static/css/main.b8bed213.chunk.css",
-    "main.js": "/the-color-piker-proyect/static/js/main.5124be83.chunk.js",
-    "main.js.map": "/the-color-piker-proyect/static/js/main.5124be83.chunk.js.map",
-    "runtime-main.js": "/the-color-piker-proyect/static/js/runtime-main.43bc43ac.js",
-    "runtime-main.js.map": "/the-color-piker-proyect/static/js/runtime-main.43bc43ac.js.map",
-    "static/css/2.d59c41ec.chunk.css": "/the-color-piker-proyect/static/css/2.d59c41ec.chunk.css",
-    "static/js/2.36bfad14.chunk.js": "/the-color-piker-proyect/static/js/2.36bfad14.chunk.js",
-    "static/js/2.36bfad14.chunk.js.map": "/the-color-piker-proyect/static/js/2.36bfad14.chunk.js.map",
-    "static/js/3.8e5fbde0.chunk.js": "/the-color-piker-proyect/static/js/3.8e5fbde0.chunk.js",
-    "static/js/3.8e5fbde0.chunk.js.map": "/the-color-piker-proyect/static/js/3.8e5fbde0.chunk.js.map",
-    "index.html": "/the-color-piker-proyect/index.html",
-    "static/css/2.d59c41ec.chunk.css.map": "/the-color-piker-proyect/static/css/2.d59c41ec.chunk.css.map",
-    "static/css/main.b8bed213.chunk.css.map": "/the-color-piker-proyect/static/css/main.b8bed213.chunk.css.map",
-    "static/js/2.36bfad14.chunk.js.LICENSE.txt": "/the-color-piker-proyect/static/js/2.36bfad14.chunk.js.LICENSE.txt",
-    "static/media/PaletteList.css": "/the-color-piker-proyect/static/media/background.b07d7dc4.jpg"
+    "main.css": "/massive-color-projext/static/css/main.89dffd56.chunk.css",
+    "main.js": "/massive-color-projext/static/js/main.5124be83.chunk.js",
+    "main.js.map": "/massive-color-projext/static/js/main.5124be83.chunk.js.map",
+    "runtime-main.js": "/massive-color-projext/static/js/runtime-main.d5e2defb.js",
+    "runtime-main.js.map": "/massive-color-projext/static/js/runtime-main.d5e2defb.js.map",
+    "static/css/2.d59c41ec.chunk.css": "/massive-color-projext/static/css/2.d59c41ec.chunk.css",
+    "static/js/2.36bfad14.chunk.js": "/massive-color-projext/static/js/2.36bfad14.chunk.js",
+    "static/js/2.36bfad14.chunk.js.map": "/massive-color-projext/static/js/2.36bfad14.chunk.js.map",
+    "static/js/3.8e5fbde0.chunk.js": "/massive-color-projext/static/js/3.8e5fbde0.chunk.js",
+    "static/js/3.8e5fbde0.chunk.js.map": "/massive-color-projext/static/js/3.8e5fbde0.chunk.js.map",
+    "index.html": "/massive-color-projext/index.html",
+    "static/css/2.d59c41ec.chunk.css.map": "/massive-color-projext/static/css/2.d59c41ec.chunk.css.map",
+    "static/css/main.89dffd56.chunk.css.map": "/massive-color-projext/static/css/main.89dffd56.chunk.css.map",
+    "static/js/2.36bfad14.chunk.js.LICENSE.txt": "/massive-color-projext/static/js/2.36bfad14.chunk.js.LICENSE.txt",
+    "static/media/PaletteList.css": "/massive-color-projext/static/media/background.b07d7dc4.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.43bc43ac.js",
+    "static/js/runtime-main.d5e2defb.js",
     "static/css/2.d59c41ec.chunk.css",
     "static/js/2.36bfad14.chunk.js",
-    "static/css/main.b8bed213.chunk.css",
+    "static/css/main.89dffd56.chunk.css",
     "static/js/main.5124be83.chunk.js"
   ]
 }
