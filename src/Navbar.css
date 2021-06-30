@@ -32,9 +32,14 @@
   font-size: 1.2;
   font-weight: bold;
   letter-spacing: 1px;
+  width: 20%;
 }
 
 .select {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .rc-slider-rail {
