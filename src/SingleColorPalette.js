@@ -36,12 +36,10 @@ class SingleColorPalette extends Component {
   }
 
   generatePalette() {
-    console.log(this.props.color);
     let colorsArr = Object.entries(this.props.palette.colors);
     // eslint-disable-next-line array-callback-return
     let colorsScanned = colorsArr.map((e) => {
       for (let color of e[1]) {
-        console.log(color.name.replace(/[0-9]/g, '').trim());
         if (color.name.replace(/[0-9]/g, '').trim() === this.props.color.trim()) {
           return color;
         }
@@ -54,7 +52,6 @@ class SingleColorPalette extends Component {
     let { classes } = this.props;
     let colors = this.generatePalette();
     colors.pop();
-    console.log(colors);
 
     return (
       <div className={classes.singleColorPalette}>

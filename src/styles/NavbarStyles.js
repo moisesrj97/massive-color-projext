@@ -42,39 +42,6 @@ export default {
     justifyContent: 'flex-end',
     alignItems: 'center',
   },
-
-  rcSliderRail: {
-    backgroundColor: 'transparent',
-  },
-
-  rcSliderTrack: {
-    backgroundColor: 'gray !important',
-  },
-
-  rcSliderHandle: {
-    backgroundColor: 'black !important',
-    border: '1px solid black !important',
-    outline: 'none',
-    boxShadow: 'none',
-    '&:hover': {
-      backgroundColor: 'black !important',
-      border: '1px solid black !important',
-      outline: 'none',
-      boxShadow: 'none',
-    },
-    '&:active': {
-      backgroundColor: 'black !important',
-      border: '1px solid black !important',
-      outline: 'none',
-      boxShadow: 'none',
-    },
-    '&:focus': {
-      backgroundColor: 'black !important',
-      border: '1px solid black !important',
-      outline: 'none',
-      boxShadow: 'none',
-    },
-  },
   '@media (max-width: 500px)': {
     Navbar: {
       height: 'auto',
