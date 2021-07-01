@@ -4,35 +4,7 @@ import Footer from './Footer';
 import ColorBox from './ColorBox';
 import { withStyles } from '@material-ui/core/styles';
 import { v4 as uuid } from 'uuid';
-
-const styles = {
-  boxGrid: {
-    height: '90%',
-    display: 'flex',
-    flexWrap: 'wrap',
-    overflow: 'hidden',
-  },
-  singleColorPalette: {
-    height: '100%',
-  },
-  backBox: {
-    width: '20%',
-    heigth: 'width',
-    backgroundColor: 'black',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    cursor: 'pointer',
-    fontSize: '2rem',
-    fontWeigth: 'bold',
-  },
-  '@media (max-width: 500px)': {
-    backBox: {
-      width: '100%',
-    },
-  },
-};
+import styles from './styles/SingleColorPaletteStyles';
 
 class SingleColorPalette extends Component {
   constructor(props) {

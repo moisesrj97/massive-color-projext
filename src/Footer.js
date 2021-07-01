@@ -1,19 +1,6 @@
 import { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-
-const styles = {
-  footer: {
-    height: '100%',
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    padding: '0 25px',
-    margin: '0',
-  },
-  footerContainer: {
-    height: '5%',
-  },
-};
+import styles from './styles/FooterStyles';
 
 class Footer extends Component {
   render() {

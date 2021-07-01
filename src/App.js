@@ -21,21 +21,35 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={() => <PaletteList palettes={seedColors} />} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <div className="App">
+              <PaletteList palettes={seedColors} />
+            </div>
+          )}
+        />
         <Route
           exact
           path="/palette/:id"
-          render={(routeProps) => <Palette palette={createPalette(this.findPalette(routeProps.match.params.id))} {...routeProps} />}
+          render={(routeProps) => (
+            <div className="App">
+              <Palette palette={createPalette(this.findPalette(routeProps.match.params.id))} {...routeProps} />
+            </div>
+          )}
         />
         <Route
           path="/palette/:id/:color"
           render={(routeProps) => (
-            <SingleColorPalette
-              palette={createPalette(this.findPalette(routeProps.match.params.id))}
-              id={routeProps.match.params.id}
-              color={routeProps.match.params.color}
-              {...routeProps}
-            />
+            <div className="App">
+              <SingleColorPalette
+                palette={createPalette(this.findPalette(routeProps.match.params.id))}
+                id={routeProps.match.params.id}
+                color={routeProps.match.params.color}
+                {...routeProps}
+              />
+            </div>
           )}
         ></Route>
         <Route render={() => <h1>Not Found</h1>} />

@@ -4,39 +4,7 @@ import { Component } from 'react';
 import ColorBox from './ColorBox';
 import { v4 as uuid } from 'uuid';
 import { withStyles } from '@material-ui/core/styles';
-
-let styles = {
-  Palette: {
-    height: '100vh',
-  },
-  colors: {
-    display: 'flex',
-    height: '90%',
-    flexWrap: 'wrap',
-    overflow: 'hidden',
-  },
-
-  '@media (max-width: 500px)': {
-    Palette: {
-      height: '100%',
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-
-    colors: {
-      height: '100%',
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-
-    ColorBox: {
-      width: '100%',
-      height: '100px',
-    },
-  },
-};
+import styles from './styles/PaletteStyles';
 
 class Palette extends Component {
   constructor(props) {

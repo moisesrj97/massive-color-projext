@@ -1,8 +1,9 @@
 import { Component } from 'react';
-import './PaletteList.css';
 import MiniPalette from './MiniPalette';
 import background from './background.jpg';
 import { v4 as uuid } from 'uuid';
+import { withStyles } from '@material-ui/core/styles';
+import styles from './styles/PaletteListStyles';
 
 class PaletteList extends Component {
   constructor(props) {
@@ -10,10 +11,11 @@ class PaletteList extends Component {
     this.state = {};
   }
   render() {
+    let { classes } = this.props;
     return (
-      <div className="PaletteList" style={{ backgroundImage: { background } }}>
+      <div className={classes.PaletteList} style={{ backgroundImage: { background } }}>
         <h1>colorPiker</h1>
-        <div className="miniPalettes">
+        <div className={classes.miniPalettes}>
           {this.props.palettes.map((e) => {
             return <MiniPalette key={uuid()} {...e} />;
           })}
@@ -23,4 +25,4 @@ class PaletteList extends Component {
   }
 }
 
-export default PaletteList;
+export default withStyles(styles)(PaletteList);
