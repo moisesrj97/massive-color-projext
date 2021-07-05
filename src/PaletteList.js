@@ -4,6 +4,7 @@ import background from './background.jpg';
 import { v4 as uuid } from 'uuid';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles/PaletteListStyles';
+import { Link } from 'react-router-dom';
 
 class PaletteList extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class PaletteList extends Component {
             return <MiniPalette key={uuid()} {...e} />;
           })}
         </div>
+        <Link to="palette/new">Create new Palette</Link>
       </div>
     );
   }
