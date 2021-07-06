@@ -11,6 +11,15 @@ export default {
     backgroundColor: 'white',
     boxShadow: '3px 3px 5px gray',
     margin: '15px',
+    position: 'relative',
+    '&:hover $deleteButton': {
+      opacity: 1,
+      transition: 'all 0.3s',
+    },
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
   },
   grid: {
     width: '225px',
@@ -33,5 +42,13 @@ export default {
       color: 'black',
       fontWeight: 'bold',
     },
+  },
+  deleteButton: {
+    position: 'absolute',
+    right: 0,
+    padding: '3px',
+    borderRadius: '0 15px 0 0',
+    backgroundColor: 'red',
+    opacity: 0,
   },
 };

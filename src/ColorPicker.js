@@ -28,6 +28,10 @@ class ColorPicker extends Component {
     }
   };
 
+  handleClear = () => {
+    this.props.clearPalette();
+  };
+
   render() {
     let bgColor, textColor;
 
@@ -41,11 +45,20 @@ class ColorPicker extends Component {
 
     return (
       <div>
+        <Button variant="contained" style={{ margin: '15px' }} color="secondary" onClick={this.handleClear}>
+          Clear palette
+        </Button>
         <ChromePicker color={this.state.stateColor !== '' ? this.state.stateColor.hsl : 'purple'} onChange={this.handleColorChange} />
         <TextField id="outlined-basic" label="Outlined" variant="outlined" style={{ margin: '15px' }} onChange={this.handleInputChange} />
-        <Button variant="contained" color="primary" style={{ backgroundColor: bgColor, color: textColor }} onClick={this.handleClick}>
-          Add Color
-        </Button>
+        {this.props.fullPalette ? (
+          <Button variant="contained" color="primary" style={{ backgroundColor: 'gray', color: 'white' }} disabled>
+            Full Palette
+          </Button>
+        ) : (
+          <Button variant="contained" color="primary" style={{ backgroundColor: bgColor, color: textColor }} onClick={this.handleClick}>
+            Add Color
+          </Button>
+        )}
       </div>
     );
   }

@@ -12,11 +12,23 @@ import { createPalette } from './colorHelpers';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      palettes: seedColors,
+    };
+    this.addPalette = this.addPalette.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  addPalette(newPalette) {
+    this.setState({ palettes: [...this.state.palettes, newPalette] });
   }
 
   findPalette(id) {
-    return seedColors.find((e) => e.id === id);
+    return this.state.palettes.find((e) => e.id === id);
+  }
+
+  handleDelete(id) {
+    this.setState({ palettes: this.state.palettes.filter((e) => e.id !== id) });
   }
 
   render() {
@@ -27,7 +39,7 @@ class App extends Component {
           path="/"
           render={() => (
             <div className="App">
-              <PaletteList palettes={seedColors} />
+              <PaletteList palettes={this.state.palettes} deletePalette={this.handleDelete} />
             </div>
           )}
         />
@@ -36,7 +48,7 @@ class App extends Component {
           path="/palette/new"
           render={(routeProps) => (
             <div className="App">
-              <PaletteForm palettes={seedColors} />
+              <PaletteForm palettes={this.state.palettes} addPalette={this.addPalette} routeProps={routeProps} />
             </div>
           )}
         />

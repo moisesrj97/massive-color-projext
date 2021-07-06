@@ -13,12 +13,22 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ColorPicker from './ColorPicker';
 import { v4 as uuid } from 'uuid';
+import DraggableColorList from './DraggableColorList';
 import DraggableColorBox from './DraggableColorBox';
 import { Button, TextField } from '@material-ui/core';
-
+import Picker from 'emoji-picker-react';
+import Popper from '@material-ui/core/Popper';
+import { SortableContainer, SortableElement } from 'react-sortable-hoc';
+import arrayMove from 'array-move';
 const drawerWidth = 360;
 
 const useStyles = makeStyles((theme) => ({
+  paper: {
+    border: '1px solid',
+    padding: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
+    zIndex: 25,
+  },
   root: {
     display: 'flex',
     justifyItems: 'space-between',
@@ -84,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: -drawerWidth,
     marginTop: '64px',
+    padding: 0,
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'start',
@@ -104,6 +115,10 @@ export default function PersistentDrawerLeft(props) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [colors, setColors] = React.useState([]);
+  const [paletteName, setPaletteName] = React.useState('');
+  const [isFull, setIsFull] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [emoji, setEmoji] = React.useState('😀');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -122,15 +137,64 @@ export default function PersistentDrawerLeft(props) {
       }
     }
 
-    if (colors.length < 20) {
-      setColors([...colors, colorSquareObject]);
-    } else {
-      alert('You can only add 20 colors to a palette!');
+    for (let color of colors) {
+      if (color.colorName.toUpperCase() === colorSquareObject.colorName.toUpperCase()) {
+        return alert('That color already exists in some palette.');
+      }
     }
+
+    if (colors.length === 19) {
+      setIsFull(true);
+    }
+
+    setColors([...colors, colorSquareObject]);
   };
 
   const deleteSquare = (squareName) => {
+    setIsFull(false);
     setColors(colors.filter((e) => e.colorName !== squareName));
+  };
+
+  const clearPalette = () => {
+    setColors([]);
+  };
+
+  const handleInput = (e) => {
+    setPaletteName(e.target.value);
+  };
+
+  const handleButton = (e) => {
+    if (paletteName === '') {
+      return alert('Choose a name for your palette');
+    }
+    let newPalette = {
+      paletteName: paletteName,
+      id: paletteName.toLowerCase().replace(' ', '-'),
+      emoji: emoji,
+      colors: [],
+    };
+
+    for (let color of colors) {
+      newPalette.colors = [...newPalette.colors, { name: color.colorName, color: color.stateColor.hex }];
+    }
+
+    props.addPalette(newPalette);
+    props.routeProps.history.push('/');
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const onEmojiClick = (event, emojiObject) => {
+    setEmoji(emojiObject.emoji);
+  };
+
+  const popperOpen = Boolean(anchorEl);
+  const id = popperOpen ? 'simple-popper' : undefined;
+
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    setColors(arrayMove(colors, oldIndex, newIndex));
   };
 
   return (
@@ -156,8 +220,24 @@ export default function PersistentDrawerLeft(props) {
             New Palette
           </Typography>
           <div style={{ heigth: '24px', display: 'flex', alignItems: 'center' }}>
-            <TextField id="outlined-basic" label="Palette Name" variant="outlined" />
-            <Button variant="contained" color="primary" style={{ margin: '15px' }}>
+            <TextField id="outlined-basic" label="Palette Name" variant="outlined" onChange={handleInput} />
+            <div>
+              <Button
+                onClick={handleClick}
+                aria-describedby={id}
+                variant="contained"
+                color="primary"
+                style={{ margin: '15px', backgroundColor: 'white' }}
+              >
+                {emoji}
+              </Button>
+              <Popper id={id} open={popperOpen} anchorEl={anchorEl}>
+                <div className={classes.paper} style={{ marginTop: '25px' }}>
+                  <Picker onEmojiClick={onEmojiClick} />
+                </div>
+              </Popper>
+            </div>
+            <Button variant="contained" color="primary" style={{ margin: '15px' }} onClick={handleButton}>
               Create Palette
             </Button>
           </div>
@@ -179,7 +259,7 @@ export default function PersistentDrawerLeft(props) {
         <Divider />
         {/* Drawer content */}
         <div className={classes.drawerContent}>
-          <ColorPicker handleSubmit={addSquare} />
+          <ColorPicker handleSubmit={addSquare} fullPalette={isFull} clearPalette={clearPalette} />
         </div>
       </Drawer>
       <main
@@ -188,13 +268,8 @@ export default function PersistentDrawerLeft(props) {
         })}
       >
         {/* Main content */}
-        {colors.length > 1 ? (
-          colors.map((e) => {
-            return <DraggableColorBox color={e.stateColor} name={e.colorName} key={uuid()} handleDelete={deleteSquare} />;
-          })
-        ) : colors.length > 0 ? (
-          <DraggableColorBox color={colors[0].stateColor} name={colors[0].colorName} key={uuid()} handleDelete={deleteSquare} />
-        ) : null}
+
+        <DraggableColorList axis={'xy'} colors={colors} handleDelete={deleteSquare} onSortEnd={onSortEnd} pressDelay={100} />
       </main>
     </div>
   );
